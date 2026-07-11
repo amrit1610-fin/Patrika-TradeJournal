@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Trade {
+  id        Int      @id @default(autoincrement())
+  dateTime  DateTime
+  duration  Int      // duration of trade in minutes
+  symbol    String
+  direction String   // "Long" or "Short"
+  rr        Float
+  reason    String
+  result    String   // "Win", "Loss", "Breakeven"
+  grossPnl  Float
+  fees      Float
+  netPnl    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
